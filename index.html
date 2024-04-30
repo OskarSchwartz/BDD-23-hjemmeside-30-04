@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aarhus universitets ladestander</title>
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            position: relative; 
+        }
+
+        .banner {
+            background-color: #012547; 
+            color: white; 
+            padding: 10px; 
+            width: 100%; 
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex; 
+            align-items: center;
+        }
+
+        .banner img {
+            width: 50px; 
+            height: auto; 
+            margin-right: 10px;
+        }
+
+        .tekst {
+            font-family: "aptos", sans-serif;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        #submitBtn {
+            background-color: #012547; 
+            border: 2px solid #012547; 
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition-duration: 0.4s;
+            outline: none;
+        }
+
+        .top-left-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 280px; 
+            height: auto; 
+            margin: 10px; 
+            z-index: 999; 
+}
+
+        #submitBtn:hover {
+            background-color: white;
+            color: #012547;
+        }
+        
+    </style>
+</head>
+<body>
+
+    
+    <img class="top-left-img" src="https://github.com/OskarSchwartz/BDD-23-hjemmeside-29-04/blob/main/aarhus-university.png?raw=true" alt="Logo"> 
+
+    <div class="banner">
+        
+    </div>
+
+    <br> <br> <br> <br> <br>
+
+    <p class="tekst"> Velkommen til Aarhus universitets nye <strong>ladestander! </strong> </h1>
+
+    <p class="tekst"> Indtast dine oplysninger for at starte: </a>
+
+    <br>
+    <br>
+    <label for="name"> Navn: </label>
+    <input type="text" id="name">
+    <br>
+    <br>
+    <label for="address"> Adresse: </label>
+    <input type="text" id="address">
+    <br>
+    <br>
+    <button id="submitBtn">Videre</button>
+
+    <script>
+        function storeInputValues(event) {
+            event.preventDefault(); 
+
+            var nameInput = document.getElementById('name').value.trim(); 
+            var addressInput = document.getElementById('address').value.trim(); 
+
+            // Check if both name and address are not empty
+            if (nameInput !== "" && addressInput !== "") {
+                var name = nameInput;
+                var address = addressInput;
+
+                console.log("Navn: " + name);
+                console.log("Adresse: " + address);
+
+                localStorage.setItem('name', name);
+                localStorage.setItem('address', address);
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude
+                        localStorage.setItem('latitude', latitude);
+                        localStorage.setItem('longitude', longitude);
+                        console.log("Latitude: " + latitude);
+                        console.log("Longitude: " + longitude);
+
+                        window.location.href = 'side2.html';
+                    });
+                } else {
+                    console.log("Geolocation is not supported by this browser.");
+                        window.location.href = 'side2.html';
+                }
+            } else {
+                alert("Venligst udfyld både navn og adresse for at fortsætte.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('submitBtn').addEventListener('click', storeInputValues);
+        });
+    </script>
+
+</body>
+</html>

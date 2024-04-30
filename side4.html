@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empty Page</title>
+</head>
+
+<style>
+
+body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+.banner {
+    background-color: #012547; 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    width: 100%; 
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.banner img {
+    width: 200px; 
+    height: auto; 
+    margin-right: 10px;
+}
+
+.checkbox-label {
+    display: block;
+    margin-bottom: 15px; 
+}
+
+.checkbox {
+    transform: scale(3);
+    margin-right: 10px; 
+}
+
+.checkboxtext {
+    font-family: "aptos", sans-serif;
+    text-align: center;
+    font-size: 18px;
+}
+
+.tekst {
+    font-family: "aptos", sans-serif;
+    text-align: center;
+    font-size: 36px;
+}
+
+#NæsteKnap {
+    background-color: #012547; 
+    border: 2px solid #012547; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    outline: none;
+}
+
+#NæsteKnap:hover {
+  background-color: white;
+  color: #012547; 
+}
+
+#TilbageKnap {
+  background-color: #012547; 
+  border: 2px solid #012547; 
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+#TilbageKnap:hover {
+  background-color: white;
+  color: #012547; 
+}
+
+.top-left-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 280px; 
+            height: auto; 
+            margin: 10px; 
+            z-index: 999; 
+}
+
+</style>
+
+<body>
+    <img class="top-left-img" src="https://github.com/OskarSchwartz/BDD-23-hjemmeside-29-04/blob/main/aarhus-university.png?raw=true" alt="Logo"> 
+
+    <div class="banner">
+    
+    </div>
+
+    <br> <br> <br> <br> <br> <br>
+
+    <p class="tekst">Kører du frem og tilbage mellem dine fritidsaktiviteter</p>
+
+    <br> <br>
+
+<label class="checkbox-label checkboxtext" for="Ja">Ja</label> 
+<input type="checkbox" class="checkbox" id="Ja" onclick="Ja()">
+
+<br>
+
+<label class="checkbox-label checkboxtext"  for="nej">Nej</label>
+<input type="checkbox" class="checkbox" id="nej" onclick="Nej()">
+
+    <br> <br>
+
+<p class="tekst" id="tekst" style="display:none">Der er sikkert muligheder for at lade ved lokationen af dine fritidsaktiviteter. Har du overvejet at lade ved fritidsaktiviteterne i stedet? </p>
+
+<label class="checkbox-label tekst" id="label" for="lade" style="display:none">Ønsker at lade</label>
+
+    <input type="checkbox" class="checkbox" id="lade" style="display:none" onclick="ØnskerAtLade()">
+
+    <br><br><br><br><br>
+
+    <input type="submit" value="Næste" id="NæsteKnap" style="display:none" onclick="NæsteKnap()">
+
+    
+
+<script>
+
+    var checkBox = document.getElementById("Ja");
+    var text = document.getElementById("tekst");
+    var label = document.getElementById("label")
+    var ØnskerAtLadeCheckbox = document.getElementById("lade")
+    var Næste = document.getElementById("NæsteKnap")
+    var NejCheckbox = document.getElementById("nej")
+
+    function Ja() {
+        if (checkBox.checked == true){
+            console.log("Ja er tjekket af")
+            text.style.display = "block";
+            label.style.display = "block";
+            ØnskerAtLadeCheckbox.style.display = "block";
+        } else {
+            text.style.display = "none";
+            label.style.display = "none";
+            ØnskerAtLadeCheckbox.style.display = "none";
+
+        }
+    }
+
+    function Nej() {
+        if (NejCheckbox.checked == true) {
+            Næste.style.display = "block";
+        } else {
+            Næste.style.display = "none";
+        }
+    }
+
+    function ØnskerAtLade() {
+        if (ØnskerAtLadeCheckbox.checked == true) {
+            Næste.style.display = "block"
+        } else {
+            Næste.style.display = "none"
+        }
+
+    }
+
+    function NæsteKnap() {
+            window.location.href = 'side5.html';
+        }    
+
+    function TilbageKnap() {
+        window.location.href = "side3.html";
+    }
+
+    </script>    
+
+<input type="submit" value="Tilbage" id="TilbageKnap" onclick="TilbageKnap()">
+
+</body>
+</html>
+
